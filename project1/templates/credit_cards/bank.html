@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    <title>ADD BANK</title>
+{% endblock %}
+
+{% block content %}
+<div class="container jumbotron">
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crspy }}
+        <input type="submit" value="ADD BANK" class="btn btn-outline-success col-5">
+        <input type="reset" value="RESET" class="btn btn-outline-warning col-5>
+    </form>
+</div>
+{% endblock %}
