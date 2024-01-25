@@ -16,8 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from credit_cards.views import CardViewSet, BankViewSet, CustomerViewSet, FeesAndChargesViewSet, RewardsProgramViewSet, SpendingCategoryViewSet, AdditionalInformationViewSet
+
+router = DefaultRouter()
+router.register("cards", CardViewSet, basename="cards")
+router.register("bank", BankViewSet, basename="bank")
+router.register("cust", CustomerViewSet, basename="cust")
+router.register("fee", FeesAndChargesViewSet, basename="fee")
+router.register("rew", RewardsProgramViewSet, basename="rew")
+router.register("spe", SpendingCategoryViewSet, basename="spe")
+router.register("addi", AdditionalInformationViewSet, basename="addi")
+
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("a1/", include("credit_cards.urls"))
+    path("cre/", include(router.urls)),
 ]
